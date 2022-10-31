@@ -3,4 +3,7 @@
 .RData
 .Ruserdata
 
-output/
+output/fullsample
+output/K12fold
+
+test_target

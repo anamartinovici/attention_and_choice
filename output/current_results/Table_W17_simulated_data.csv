@@ -1,0 +1,6 @@
+"","choice_model","npars","ELPD","perf_mq_mean_over_d","hit_CI","model_description"
+"1","M0",8,"=""-503""","32%","[28; 35]","M0: FE, colnum"
+"2","M1",9,"=""-434""","49%","[47; 50]","M1: FE, own, colnum"
+"3","M2",10,"=""-407""","49%","[47; 52]","M2: FE, own, know, colnum"
+"4","M3",12,"=""-119""","84%","[82; 86]","M3: theta_ilq (4 types of attention x 3 growth factors)"
+"5","PM",22,"=""-115""","85%","[83; 87]","PM: FE, own, know, theta_ilq (G x 3 growth factors), colnum"
