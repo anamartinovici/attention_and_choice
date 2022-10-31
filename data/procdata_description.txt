@@ -1,0 +1,53 @@
+B = number of brands
+G = number of measures (fixations, within-brand saccades, between-brands saccades, other saccades)
+Q = number of quarters/time periods
+N = number of participants
+
+brand_number is a data frame with the following variables:
+	"brandletter" = A, B, C, D, E
+	"brandnum"    = 1, 2, 3, 4, 5
+		- when using matrices or multidimensional arrays with on of the dimensions equal to B, 
+			information about brand A is at position 1, information about brand B at position 2, and so on
+
+CPLX_colnum_brandname is a data frame with the following variables:
+	"counterbalanceid" = complexity & column order combination: high1-5, medium1-5, low1-5 (participants are randomly assigned)
+	"brandletter" = A, B, C, D, E
+	"brandcol_number" = 1 to 5, the number of the column in which the brandletter is displayed, counting from left to right
+
+participant_info is a data frame with the following variables:
+	"participant" = 1 to 325
+	"counterbalanceid" = complexity & column order combination: high1-5, medium1-5, low1-5
+	"purchase_likelihood" = likelyhood of purchase from 0 to 100
+	"gender" = Female or Male
+	"age" = 18-29, 30-49, 50-64, 65+
+	"HH_income_2012" = 2012 annual household income: 
+				$14,999 or less
+				$15,000 to $24,999
+				$25,000 to $34,999
+				$35,000 to $49,999
+			 	$50,000 to $74,999
+				$75,000 to $99,999 
+				$100,000 to $149,999
+		        $150,000 or more 
+				I prefer not to answer 
+	"education_group" = highest level completed			
+	"know_smartphones" = knowledge about smartphones (the product category), scale 1-7
+	"brandletter_chosen" = the letter associated with the brand chosen during the study
+	"smartphone_owner" = 1 if owns a smartphone (no matter the brand), 0 otherwise
+	"brandletter_owned" = if the participant owns one of the brands on display, the letter associated with that brand
+	"know_A" = knowledge about the brand before the study, scale 1-7
+	"know_B" = knowledge about the brand before the study, scale 1-7
+	"know_C" = knowledge about the brand before the study, scale 1-7
+	"know_D" = knowledge about the brand before the study, scale 1-7
+	"know_E" = knowledge about the brand before the study, scale 1-7
+	"user_segment" = brandA, brandB, other, or nonSP (based on brandletter_owned)
+	"cplx_cond" = low, medium, or high
+	"K10fold" = randomly assigned Kfold when K=10
+	"K12fold" = usersegment_cplxcond for Kfold with K=12 (design based)
+
+obs_eye_movements is a data frame with the following variables:
+	"participant" = 1 to 325
+	"EM_name" = fix (fixations), bsac (within-brand saccades), asac (between-brand saccades), nsac (other saccades)
+	"brandletter" = A, B, C, D, E
+	"quarter" = 1 to 4
+	"EM_count" = number of eye-movements

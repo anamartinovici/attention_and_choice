@@ -1,0 +1,137 @@
+---
+title: "Results based on simulated data"
+author: "Ana Martinovici"
+date: "Last compiled on `r Sys.Date()`"
+output: 
+    html_document:
+        toc: true
+        toc_float: 
+            collapsed: false
+        number_sections: true
+        code_folding: hide
+        theme: cerulean
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+
+library("tidyverse")
+library("rstan")
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+source(here::here("analysis", "est_att_aux.R"))
+source(here::here("analysis", "est_choice_aux.R"))
+source(here::here("analysis", "Kfold_pred_choice_aux.R"))
+source(here::here("analysis", "do_figures.R"))
+source(here::here("analysis", "do_tables.R"))
+source(here::here("analysis", "tables_and_figures_aux.R"))
+
+# LOF stands for large output files (estimation and prediction output)
+DIR_LOF <- here::here("output")
+
+# this is the directory where tables and figures are saved
+DIR_current_results  <- here::here("output", "current_results")
+if(!dir.exists(DIR_current_results)) {
+	dir.create(DIR_current_results)
+}
+
+```
+
+
+# Appendix A
+
+```{r figure-W1}
+
+gg_att_share_V1(DIR_current_results = DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W1.pdf"))
+
+```
+
+```{r figure-W2}
+
+gg_att_share_V2(DIR_current_results = DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W2.pdf"))
+
+```
+
+# Appendix E
+
+```{r figure-W10}
+
+gg_figure_E2(DIR_current_results= DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W10.pdf"))
+
+```
+
+```{r figure-W11}
+
+gg_figure_E3(DIR_current_results= DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W11.pdf"))
+
+```
+
+# Appendix F
+
+```{r figure-W12}
+
+gg_figure_F1_part1(DIR_current_results = DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W12_part1.pdf"))
+
+gg_figure_F1_part2(DIR_current_results = DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W12_part2.pdf"))
+
+```
+
+```{r table-W16}
+
+do_table_EM_summaries(f_output_filename = "Table_W16_simulated_data")
+
+```
+
+
+```{r figure-W13}
+
+f_figureF2(do_this = "info_cond",
+		   DIR_current_results = DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W13_part1.pdf"))
+
+
+f_figureF2(do_this = "br_own",
+		   DIR_current_results = DIR_current_results)
+ggsave(filename = here::here(DIR_current_results, "Figure_W13_part2.pdf"))
+
+```
+
+
+```{r table-W17}
+
+do_table_elpd_hit(DIR_LOF = DIR_LOF,
+				  model_number_in_paper = c(paste0("M", 0:3), "PM"),
+				  DIR_current_results = DIR_current_results,
+				  f_output_filename = "Table_W17_simulated_data")
+
+```
+
+
+```{r table-W18}
+
+do_table_brand_choice_coeff(DIR_LOF = DIR_LOF,
+							choice_model = "PM",
+							DIR_current_results = DIR_current_results,
+							f_output_filename = "Table_W18_simulated_data") 
+
+```
+
+# Session Info
+
+These tables and figures were last generated using:
+
+```{r}
+
+sessionInfo()
+
+```
+
