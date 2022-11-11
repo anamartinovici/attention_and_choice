@@ -1,0 +1,106 @@
+echo "---------------------------------------------------------------"
+printf "         Target is: output/fullsample/est_att/SNTH_est_att \n \n"
+printf "The prerequisites for this target (output/fullsample/est_att/SNTH_est_att) are: \n  analysis/est_att.R\n  analysis/est_att_aux.R\n  analysis/est_att.stan\n \n"
+printf "The prerequisites newer than the target (output/fullsample/est_att/SNTH_est_att) are: \n  analysis/est_att.R\n  analysis/est_att_aux.R\n  analysis/est_att.stan\n \n"
+printf "         Starting work on target: output/fullsample/est_att/SNTH_est_att \n\n"
+Rscript analysis/est_att.R \
+         \
+        "data/SNTH_procdata.RData" \
+         \
+        "SNTH_est_att" \
+        "output/fullsample/est_att"
+date > output/fullsample/est_att/SNTH_est_att
+echo "---------------------------------------------------------------"
+printf "         Target is: output/fullsample/est_betatheta/SNTH_betadraws_att.RData \n \n"
+printf "The prerequisites for this target (output/fullsample/est_betatheta/SNTH_betadraws_att.RData) are: \n  output/fullsample/est_att/SNTH_est_att\n  analysis/extract_betadraws_att.R\n \n"
+printf "The prerequisites newer than the target (output/fullsample/est_betatheta/SNTH_betadraws_att.RData) are: \n  output/fullsample/est_att/SNTH_est_att\n  analysis/extract_betadraws_att.R\n \n"
+printf "         Starting work on target: output/fullsample/est_betatheta/SNTH_betadraws_att.RData \n\n"
+Rscript analysis/extract_betadraws_att.R \
+                    "fullsample" \
+                    "output"
+echo "---------------------------------------------------------------"
+printf "         Target is: output/fullsample/est_betatheta/SNTH_thetadraws_att \n \n"
+printf "The prerequisites for this target (output/fullsample/est_betatheta/SNTH_thetadraws_att) are: \n  output/fullsample/est_betatheta/SNTH_betadraws_att.RData\n  analysis/extract_thetadraws_ji.R\n  analysis/extract_thetadraws_j0.R\n \n"
+printf "The prerequisites newer than the target (output/fullsample/est_betatheta/SNTH_thetadraws_att) are: \n  output/fullsample/est_betatheta/SNTH_betadraws_att.RData\n  analysis/extract_thetadraws_ji.R\n  analysis/extract_thetadraws_j0.R\n \n"
+printf "         Starting work on target: output/fullsample/est_betatheta/SNTH_thetadraws_att \n\n"
+Rscript analysis/extract_thetadraws_j0.R \
+                    "output"
+Rscript analysis/extract_thetadraws_ji.R \
+                    "fullsample" \
+                    "output"
+date > output/fullsample/est_betatheta/SNTH_thetadraws_att
+echo "---------------------------------------------------------------"
+printf "         Target is: output/fullsample/est_choice/SNTH_est_choice \n \n"
+printf "The prerequisites for this target (output/fullsample/est_choice/SNTH_est_choice) are: \n  output/fullsample/est_betatheta/SNTH_thetadraws_att\n  analysis/est_choice.R\n  analysis/est_choice_aux.R\n \n"
+printf "The prerequisites newer than the target (output/fullsample/est_choice/SNTH_est_choice) are: \n  output/fullsample/est_betatheta/SNTH_thetadraws_att\n  analysis/est_choice.R\n  analysis/est_choice_aux.R\n \n"
+printf "         Starting work on target: output/fullsample/est_choice/SNTH_est_choice \n\n"
+Rscript analysis/est_choice.R \
+		"fullsample" \
+		"output"
+date > output/fullsample/est_choice/SNTH_est_choice
+echo "---------------------------------------------------------------"
+printf "         Target is: output/K12fold/est_att/SNTH_K12fold_est_att \n \n"
+printf "The prerequisites for this target (output/K12fold/est_att/SNTH_K12fold_est_att) are: \n  analysis/Kfold_split_procdata.R\n  analysis/est_att.R\n  analysis/est_att_aux.R\n  analysis/est_att.stan\n \n"
+printf "The prerequisites newer than the target (output/K12fold/est_att/SNTH_K12fold_est_att) are: \n  analysis/Kfold_split_procdata.R\n  analysis/est_att.R\n  analysis/est_att_aux.R\n  analysis/est_att.stan\n \n"
+printf "         Starting work on target: output/K12fold/est_att/SNTH_K12fold_est_att \n\n"
+Rscript analysis/Kfold_split_procdata.R \
+		"output"
+Rscript analysis/est_att.R \
+         \
+        "data/SNTH_procdata.RData" \
+         \
+        "SNTH_est_att" \
+        "output/fullsample/est_att"
+date > output/K12fold/est_att/SNTH_K12fold_est_att
+echo "---------------------------------------------------------------"
+printf "         Target is: output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta \n \n"
+printf "The prerequisites for this target (output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta) are: \n  output/K12fold/est_att/SNTH_K12fold_est_att\n  analysis/extract_betadraws_att.R\n  analysis/extract_thetadraws_ji.R\n  analysis/extract_thetadraws_j0.R\n \n"
+printf "The prerequisites newer than the target (output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta) are: \n  output/K12fold/est_att/SNTH_K12fold_est_att\n  analysis/extract_betadraws_att.R\n  analysis/extract_thetadraws_ji.R\n  analysis/extract_thetadraws_j0.R\n \n"
+printf "         Starting work on target: output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta \n\n"
+Rscript analysis/extract_betadraws_att.R \
+                    "K12fold" \
+                    "output"
+Rscript analysis/extract_thetadraws_ji.R \
+                    "K12fold" \
+                    "output"
+date > output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta
+echo "---------------------------------------------------------------"
+printf "         Target is: output/K12fold/pred_theta/SNTH_K12fold_pred_theta \n \n"
+printf "The prerequisites for this target (output/K12fold/pred_theta/SNTH_K12fold_pred_theta) are: \n  output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta\n  analysis/Kfold_pred_att_theta_jigkq.R\n \n"
+printf "The prerequisites newer than the target (output/K12fold/pred_theta/SNTH_K12fold_pred_theta) are: \n  output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta\n  analysis/Kfold_pred_att_theta_jigkq.R\n \n"
+printf "         Starting work on target: output/K12fold/pred_theta/SNTH_K12fold_pred_theta \n\n"
+Rscript analysis/Kfold_pred_att_theta_jigkq.R \
+		"output"
+date > output/K12fold/pred_theta/SNTH_K12fold_pred_theta
+echo "---------------------------------------------------------------"
+printf "         Target is: output/K12fold/est_choice/SNTH_K12fold_est_choice \n \n"
+printf "The prerequisites for this target (output/K12fold/est_choice/SNTH_K12fold_est_choice) are: \n  output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta\n  analysis/est_choice.R\n  analysis/est_choice_aux.R\n \n"
+printf "The prerequisites newer than the target (output/K12fold/est_choice/SNTH_K12fold_est_choice) are: \n  output/K12fold/est_betatheta/SNTH_K12fold_est_betatheta\n  analysis/est_choice.R\n  analysis/est_choice_aux.R\n \n"
+printf "         Starting work on target: output/K12fold/est_choice/SNTH_K12fold_est_choice \n\n"
+Rscript analysis/est_choice.R \
+		"K12fold" \
+		"output"
+date > output/K12fold/est_choice/SNTH_K12fold_est_choice
+echo "---------------------------------------------------------------"
+printf "         Target is: output/K12fold/pred_utility/SNTH_K12fold_pred_utility \n \n"
+printf "The prerequisites for this target (output/K12fold/pred_utility/SNTH_K12fold_pred_utility) are: \n  output/K12fold/pred_theta/SNTH_K12fold_pred_theta\n  output/K12fold/est_choice/SNTH_K12fold_est_choice\n  analysis/Kfold_pred_utility.R\n \n"
+printf "The prerequisites newer than the target (output/K12fold/pred_utility/SNTH_K12fold_pred_utility) are: \n  output/K12fold/pred_theta/SNTH_K12fold_pred_theta\n  output/K12fold/est_choice/SNTH_K12fold_est_choice\n  analysis/Kfold_pred_utility.R\n \n"
+printf "         Starting work on target: output/K12fold/pred_utility/SNTH_K12fold_pred_utility \n\n"
+Rscript analysis/Kfold_pred_utility.R \
+		"output"
+date > output/K12fold/pred_utility/SNTH_K12fold_pred_utility
+echo "---------------------------------------------------------------"
+printf "         Target is: output/K12fold/pred_choice/SNTH_K12fold_pred_choice \n \n"
+printf "The prerequisites for this target (output/K12fold/pred_choice/SNTH_K12fold_pred_choice) are: \n  output/K12fold/pred_utility/SNTH_K12fold_pred_utility\n  analysis/Kfold_pred_choice.R\n  analysis/Kfold_pred_choice_aux.R\n \n"
+printf "The prerequisites newer than the target (output/K12fold/pred_choice/SNTH_K12fold_pred_choice) are: \n  output/K12fold/pred_utility/SNTH_K12fold_pred_utility\n  analysis/Kfold_pred_choice.R\n  analysis/Kfold_pred_choice_aux.R\n \n"
+printf "         Starting work on target: output/K12fold/pred_choice/SNTH_K12fold_pred_choice \n\n"
+Rscript analysis/Kfold_pred_choice.R \
+		"output"
+date > output/K12fold/pred_choice/SNTH_K12fold_pred_choice
+echo "---------------------------------------------------------------"
+printf "         Target is: tables_and_figures.html \n \n"
+printf "The prerequisites for this target (tables_and_figures.html) are: \n  output/fullsample/est_choice/SNTH_est_choice\n  output/K12fold/pred_choice/SNTH_K12fold_pred_choice\n  analysis/tables_and_figures.Rmd\n  analysis/tables_and_figures_aux.R\n \n"
+printf "The prerequisites newer than the target (tables_and_figures.html) are: \n  output/fullsample/est_choice/SNTH_est_choice\n  output/K12fold/pred_choice/SNTH_K12fold_pred_choice\n \n"
+printf "         Starting work on target: tables_and_figures.html \n\n"
+Rscript analysis/render_rmd.R \
+		analysis/tables_and_figures.Rmd
