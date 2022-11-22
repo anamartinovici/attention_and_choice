@@ -2,8 +2,11 @@
 
 This repository contains code and synthetic data for: 
 
-Martinovici, Pieters, and Erdem (2022), "Attention Trajectories Capture Utility Accumulation and Predict Brand Choice", *Journal of Marketing Research*, https://doi.org/10.1177/00222437221141052 
+Martinovici, Ana, Rik Pieters, and Tulin Erdem (2022), "Attention Trajectories Capture Utility Accumulation and Predict Brand Choice", *Journal of Marketing Research*, https://doi.org/10.1177/00222437221141052 
 
+If you want to cite the contents of this repository, please use: 
+
+Martinovici, Ana (2022), "Reproducibility package for Martinovici, Pieters, and Erdem (2022)", DOI: https://doi.org/10.25397/eur.21603288
 
 # Repository info
 
