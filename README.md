@@ -14,8 +14,6 @@ To improve the likelihood of numerical reproducibility, this repository contains
 
 Sections 1-3 of Baker (2020) provide an introduction to GNU Make (Mecklenburg 2004) and basic concepts relevant to using a `makefile`. If you want to learn more about `Make`, I can recommend these freely-available resources :
 
-- https://merely-useful.tech/py-rse/automate.html
-
 - https://stat545.com/make-test-drive.html
 
 - https://makefiletutorial.com/
